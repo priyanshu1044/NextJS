@@ -1,6 +1,22 @@
+"use client"
 import React from 'react'
+import Link from 'next/link'
+import axios from 'axios';
+import{useRouter } from 'next/navigation'
 
 export default function ProfilePage() {
+    const router = useRouter();
+
+    const logout = async () => {
+        try {
+            const res = await axios.get("/api/users/logout");
+            console.log(" Logout successful", res.data);
+            router.push("/login");
+        } catch (error) {
+            console.error("An unexpected error happened:", error);
+        }
+    };
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <div className="w-full max-w-xs">
@@ -24,6 +40,12 @@ export default function ProfilePage() {
                         <h3 className="text-lg font-bold text-gray-900">Skills</h3>
                         <p className="text-gray-600">JavaScript, React, Next.js, Tailwind CSS</p>
                     </div>
+                    <button
+                        onClick={logout}
+                        className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                        Logout
+                    </button>
                 </div>
             </div>
         </div>
