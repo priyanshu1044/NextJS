@@ -1,7 +1,7 @@
 
-# NextJS Project
+# NextJS Authentication Project
 
-This is a NextJS project.
+This is a NextJS Authentication project.
 
 ## Getting Started
 
